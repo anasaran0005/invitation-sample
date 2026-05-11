@@ -2,8 +2,11 @@
 
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import Lottie from 'lottie-react'
+import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import heartAnimation from '@/public/lottie animation/Heart Animation.json'
+
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false })
 
 export default function Experience() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -35,8 +38,9 @@ export default function Experience() {
         transition={{ duration: 1.5 }}
       />
 
-      {/* Main Content Container - Centered Vertical Viewport for Desktop/Tablet */}
-      <div className="relative w-full h-full max-w-[500px] mx-auto overflow-hidden z-10">
+      {/* Main Content Container - Enforced 9:16 Aspect Ratio */}
+      <div className="relative w-full h-full max-w-[calc(100vh*9/16)] mx-auto overflow-hidden z-10">
+
         
         {/* 2. Side Prop Right - Right Screen (Layer 1) */}
         <motion.img
@@ -108,6 +112,28 @@ export default function Experience() {
               />
             </div>
           </div>
+        )}
+        {/* 9. Back Button (Fixed Arrow) */}
+        {showConfetti && (
+          <motion.div
+            className="fixed bottom-6 left-6 z-[200]"
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link href="/invite/ceremonies">
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-10 h-10 flex items-center justify-center bg-white/60 backdrop-blur-md rounded-full shadow-md border border-[#c5a059]/20 text-[#c5a059] hover:bg-white/80 transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+              </motion.div>
+            </Link>
+          </motion.div>
         )}
       </div>
 
