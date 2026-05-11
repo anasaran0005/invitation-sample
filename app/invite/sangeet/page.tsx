@@ -37,18 +37,20 @@ export default function SangeetInvitation() {
         transition={{ duration: 1.5 }}
       />
 
+      {/* Sangeet Light Layer */}
+      <motion.img
+        src="/sangeet/sangeet-light.png"
+        className="absolute inset-0 w-full h-full object-cover z-[1] pointer-events-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 2 }}
+      />
+
       {/* Main Content Container - Enforced 9:16 Aspect Ratio */}
       <div className="relative w-full h-full max-w-[calc(100vh*9/16)] mx-auto overflow-hidden z-10">
 
         
-        {/* 2. Top Flowers/Decor (Layer 1) */}
-        <motion.img
-          src="/sangeet/sangeet-flower.png"
-          className="absolute top-0 left-0 w-full object-contain object-top pointer-events-none z-10"
-          initial={{ y: -200, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1.5, ease: "easeOut" }}
-        />
+
 
      
 
@@ -62,9 +64,37 @@ export default function SangeetInvitation() {
           transition={{ delay: 1.2, duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
         />
 
+        {/* Sangeet Text 3 (Layer 2.1) */}
+        <motion.div
+          className="absolute inset-0 w-full h-full z-[21] pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.2, duration: 1.5 }}
+        >
+          <img 
+            src="/sangeet/sangeet-text-3.png" 
+            alt="Sangeet Details 3" 
+            className="w-full h-full object-contain"
+          />
+        </motion.div>
+
+        {/* Sangeet Text 4 (Layer 2.2) */}
+        <motion.div
+          className="absolute inset-0 w-full h-full z-[22] pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.5, duration: 1.5 }}
+        >
+          <img 
+            src="/sangeet/sangeet-text-4.png" 
+            alt="Sangeet Details 4" 
+            className="w-full h-full object-contain"
+          />
+        </motion.div>
+
         {/* 4. Sangeet Text 1 (Layer 3) */}
         <motion.div
-          className="absolute top-[-5%] left-1/2 -translate-x-1/2 w-full z-30"
+          className="absolute top-[0%] left-1/2 -translate-x-1/2 w-full z-30"
           initial={{ opacity: 0, scale: 0.8, filter: 'blur(10px)' }}
           animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
           transition={{ delay: 2, duration: 1.5, ease: "easeOut" }}
