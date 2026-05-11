@@ -37,10 +37,10 @@ export default function SangeetInvitation() {
         transition={{ duration: 1.5 }}
       />
 
-      {/* Sangeet Light Layer */}
+      {/* Sangeet Light Layer - Desktop (Visible on Screen) */}
       <motion.img
         src="/sangeet/sangeet-light.png"
-        className="absolute inset-0 w-full h-full object-cover z-[1] pointer-events-none"
+        className="hidden md:block absolute inset-0 w-full h-full object-contain z-[11] pointer-events-none mix-blend-screen"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 2 }}
@@ -50,7 +50,23 @@ export default function SangeetInvitation() {
       <div className="relative w-full h-full max-w-[calc(100vh*9/16)] mx-auto overflow-hidden z-10">
 
         
+        {/* 2. Top Flowers/Decor (Layer 1) */}
+        <motion.img
+          src="/sangeet/sangeet-flower.png"
+          className="absolute top-0 left-0 w-full object-contain object-top pointer-events-none z-10"
+          initial={{ y: -200, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1.5, ease: "easeOut" }}
+        />
 
+        {/* Sangeet Light Layer - Mobile (Fitted Inside Container) */}
+        <motion.img
+          src="/sangeet/sangeet-light.png"
+          className="md:hidden absolute inset-0 w-full h-full object-cover z-[11] pointer-events-none mix-blend-screen"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8, duration: 2 }}
+        />
 
      
 
