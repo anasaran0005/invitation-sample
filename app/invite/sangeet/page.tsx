@@ -96,15 +96,15 @@ export default function SangeetInvitation() {
 
         {/* Sangeet Text 4 (Layer 2.2) */}
         <motion.div
-          className="absolute inset-0 w-full h-full z-[22] pointer-events-none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          className="absolute bottom-[2%] left-1/2 -translate-x-1/2 w-[80%] z-[22] pointer-events-none"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.5, duration: 1.5 }}
         >
           <img 
             src="/sangeet/sangeet-text-4.png" 
-            alt="Sangeet Details 4" 
-            className="w-full h-full object-contain"
+            alt="Let It Sparkle" 
+            className="w-full object-contain"
           />
         </motion.div>
 
