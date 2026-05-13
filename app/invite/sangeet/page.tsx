@@ -4,7 +4,8 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-import sangeetAnimation from '@/public/lottie animation/sangeet.json'
+import discoBallAnimation from '@/public/lottie animation/discoball.json'
+import purpleLightsAnimation from '@/public/lottie animation/Lights purple.json'
 
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false })
 
@@ -41,9 +42,9 @@ export default function SangeetInvitation() {
       <motion.img
         src="/sangeet/sangeet-light.png"
         className="hidden md:block absolute inset-0 w-full h-full object-contain z-[11] pointer-events-none mix-blend-screen"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 2 }}
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 2, ease: "easeOut" }}
       />
 
       {/* Main Content Container - Enforced 9:16 Aspect Ratio */}
@@ -54,8 +55,8 @@ export default function SangeetInvitation() {
         <motion.img
           src="/sangeet/sangeet-flower.png"
           className="absolute top-0 left-0 w-full object-contain object-top pointer-events-none z-10"
-          initial={{ y: -200, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+          initial={{ opacity: 0, scale: 0.8, filter: 'blur(10px)' }}
+          animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
           transition={{ delay: 0.5, duration: 1.5, ease: "easeOut" }}
         />
 
@@ -63,12 +64,25 @@ export default function SangeetInvitation() {
         <motion.img
           src="/sangeet/sangeet-light.png"
           className="md:hidden absolute inset-0 w-full h-full object-cover z-[11] pointer-events-none mix-blend-screen"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 2 }}
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 2, ease: "easeOut" }}
         />
 
      
+
+        {/* Lights Purple Animation - Behind Couple */}
+        {showAnimation && (
+          <div className="absolute inset-0 pointer-events-none z-[15] flex items-center justify-center scale-110">
+            <div className="w-full h-full">
+              <Lottie 
+                animationData={purpleLightsAnimation} 
+                loop={true}
+                style={{ width: '100%', height: '100%' }}
+              />
+            </div>
+          </div>
+        )}
 
         {/* 3. Couple (Layer 2) */}
         <motion.img
@@ -107,6 +121,17 @@ export default function SangeetInvitation() {
             className="w-full object-contain"
           />
         </motion.div>
+
+        {/* Disco Ball Animation - Top Center, In Front of Texts */}
+        {showAnimation && (
+          <div className="absolute top-[-12%] left-1/2 -translate-x-1/2 w-[60%] h-[40%] pointer-events-none z-[50]">
+            <Lottie 
+              animationData={discoBallAnimation} 
+              loop={true}
+              style={{ width: '100%', height: '100%' }}
+            />
+          </div>
+        )}
 
         {/* 4. Sangeet Text 1 (Layer 3) */}
         <motion.div
@@ -161,18 +186,6 @@ export default function SangeetInvitation() {
           </motion.div>
         )}
 
-        {/* 7. Lottie Animation */}
-        {showAnimation && (
-          <div className="absolute inset-0 pointer-events-none z-[100] flex items-center justify-center">
-            <div className="w-full h-full">
-              <Lottie 
-                animationData={sangeetAnimation} 
-                loop={true}
-                style={{ width: '100%', height: '100%' }}
-              />
-            </div>
-          </div>
-        )}
       </div>
 
     </div>

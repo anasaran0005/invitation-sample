@@ -8,10 +8,10 @@ const ceremonies = [
   {
     id: 'haldi',
     title: 'Haldi Ceremony',
-    date: 'June 18, 2026',
-    time: '4:00 PM onwards',
-    targetDate: '2026-06-18T16:00:00',
-    liveDurationHours: 12,
+    date: 'May 31, 2026',
+    time: '10:00 AM - 12:00 PM',
+    targetDate: '2026-05-31T10:00:00',
+    liveDurationHours: 2,
     href: '/invite/haldi',
     color: '#eab308',
     bg: 'bg-[#fffbeb]',
@@ -20,9 +20,9 @@ const ceremonies = [
   {
     id: 'sangeet',
     title: 'Sangeet Ceremony',
-    date: 'June 19, 2026',
-    time: '7:00 PM onwards',
-    targetDate: '2026-06-19T19:00:00',
+    date: 'May 31, 2026',
+    time: '6:00 PM onwards',
+    targetDate: '2026-05-31T18:00:00',
     liveDurationHours: 6,
     href: '/invite/sangeet',
     color: '#9333ea',
@@ -32,9 +32,9 @@ const ceremonies = [
   {
     id: 'wedding',
     title: 'Wedding Ceremony',
-    date: 'June 20, 2026',
+    date: 'June 01, 2026',
     time: '10:00 AM onwards',
-    targetDate: '2026-06-20T10:00:00',
+    targetDate: '2026-06-01T10:00:00',
     liveDurationHours: 14,
     href: '/invite/wedding',
     color: '#c5a059',
@@ -249,7 +249,7 @@ export default function CeremoniesSelection() {
             <p className="font-inter text-sm text-[#2d2d2d]/60 mb-6">Add the wedding ceremony to your digital calendar</p>
 
             <a 
-              href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Celebrations+-+Tharun+%26+Keerthi&dates=20260618T103000Z/20260620T113000Z&details=We+invite+you+to+celebrate+the+wedding+celebrations+of+Tharun+and+Keerthi.+Join+us+from+the+Haldi+to+the+Grand+Wedding+Ceremony.+Click+the+map+link+for+location:+https://maps.app.goo.gl/HR9U4WrtCjDG44Pf7&location=https://maps.app.goo.gl/HR9U4WrtCjDG44Pf7"
+              href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Celebrations+-+Tharun+%26+Keerthi&dates=20260531T100000Z/20260601T235900Z&details=We+invite+you+to+celebrate+the+wedding+celebrations+of+Tharun+and+Keerthi.+Join+us+from+the+Haldi+to+the+Grand+Wedding+Ceremony.+Click+the+map+link+for+location:+https://maps.app.goo.gl/HR9U4WrtCjDG44Pf7&location=https://maps.app.goo.gl/HR9U4WrtCjDG44Pf7"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full"
