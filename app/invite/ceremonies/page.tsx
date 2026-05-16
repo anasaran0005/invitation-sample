@@ -27,7 +27,7 @@ const ceremonies = [
     href: '/invite/sangeet',
     color: '#9333ea',
     bg: 'bg-[#faf5ff]',
-    image: '/sangeet/sangeet-invitation.jpg'
+    image: '/sangeet/sangeet-invitation.png'
   },
   {
     id: 'wedding',
@@ -39,7 +39,7 @@ const ceremonies = [
     href: '/invite/wedding',
     color: '#c5a059',
     bg: 'bg-[#fdfbf7]',
-    image: '/wedding/wedding-invitation.jpg'
+    image: '/wedding/5/wedding-invitation.png'
   }
 ]
 

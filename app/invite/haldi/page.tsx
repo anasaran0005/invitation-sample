@@ -5,13 +5,14 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-import haldiAnimation from '@/public/lottie animation/haldi.json'
+import haldiAnimation from '@/public/lottie animation/haldi-yellow.json'
 
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false })
 
 export default function HaldiInvitation() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [showAnimation, setShowAnimation] = useState(false)
+  const [animationKey, setAnimationKey] = useState(0)
 
   useEffect(() => {
     setIsLoaded(true)
@@ -23,6 +24,12 @@ export default function HaldiInvitation() {
     
     return () => clearTimeout(timer)
   }, [])
+
+  const handleAnimationComplete = () => {
+    setTimeout(() => {
+      setAnimationKey(prev => prev + 1)
+    }, 1000)
+  }
 
   if (!isLoaded) return null
 
@@ -46,36 +53,85 @@ export default function HaldiInvitation() {
         {/* 2. Top Flowers (Layer 1) */}
         <motion.img
           src="/haldi/haldi-flowers.png"
-          className="absolute top-0 left-0 w-full object-contain object-top pointer-events-none z-20"
-          initial={{ y: -200, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+          className="absolute inset-0 w-full h-full object-contain pointer-events-none z-20 origin-top"
+          initial={{ y: -100, opacity: 0, scale: 1.1 }}
+          animate={{ y: -60, opacity: 1, scale: 1.15 }}
           transition={{ delay: 0.5, duration: 1.5, ease: "easeOut" }}
         />
 
-        {/* 3. Center Text (Layer 2) */}
-        <motion.div
-          className="absolute top-[5%] left-1/2 -translate-x-1/2 w-[85%] z-30"
-          initial={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
-          animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+        {/* 2.1 Bottom Flower Pots (Layer 1.1) */}
+        <motion.img
+          src="/haldi/haldi-flowers-2.png"
+          className="absolute inset-0 w-full h-full object-contain pointer-events-none z-21"
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.2, duration: 1.5, ease: "easeOut" }}
+        />
+
+        {/* 3. Text Sequence (Layer 2) */}
+        {/* Text 1 - Moved up slightly as requested */}
+        <motion.div
+          className="absolute inset-0 w-full h-full z-30 pointer-events-none"
+          initial={{ opacity: 0, y: 10, filter: 'blur(10px)' }}
+          animate={{ opacity: 1, y: 15, filter: 'blur(0px)' }}
+          transition={{ delay: 1.8, duration: 1.5, ease: "easeOut" }}
         >
           <img 
-            src="/haldi/haldi-text.png" 
-            alt="Haldi Ceremony Invitation" 
-            className="w-full object-contain"
+            src="/haldi/haldi-text-1.png" 
+            alt="Haldi Ceremony" 
+            className="w-full h-full object-contain"
+          />
+        </motion.div>
+
+        {/* Text 2 */}
+        <motion.div
+          className="absolute inset-0 w-full h-full z-31 pointer-events-none"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 2.1, duration: 1.2, ease: "easeOut" }}
+        >
+          <img 
+            src="/haldi/haldi-text-2.png" 
+            className="w-full h-full object-contain"
+          />
+        </motion.div>
+
+        {/* Text 3 */}
+        <motion.div
+          className="absolute inset-0 w-full h-full z-32 pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.4, duration: 1.2, ease: "easeOut" }}
+        >
+          <img 
+            src="/haldi/haldi-text-3.png" 
+            className="w-full h-full object-contain"
           />
         </motion.div>
 
         {/* 4. Couple (Layer 3) */}
         <motion.img
           src="/haldi/haldi-couple.png"
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[110%] object-contain pointer-events-none z-40"
-          initial={{ y: 150, opacity: 0 }}
+          className="absolute inset-0 w-full h-full object-contain pointer-events-none z-40"
+          initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 1.8, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ delay: 2.8, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
         />
 
-        {/* 5. Back Button (Fixed Arrow) */}
+        {/* 5. Bottom Text (Layer 4) */}
+        <motion.div
+          className="absolute inset-0 w-full h-full z-50 pointer-events-none"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 3.2, duration: 1.2, ease: "easeOut" }}
+        >
+          <img 
+            src="/haldi/haldi-text-4.png" 
+            className="w-full h-full object-contain"
+          />
+        </motion.div>
+
+        {/* 6. Back Button (Fixed Arrow) */}
         {showAnimation && (
           <motion.div
             className="fixed bottom-6 left-6 z-[200]"
@@ -98,13 +154,25 @@ export default function HaldiInvitation() {
           </motion.div>
         )}
 
-        {/* 6. Lottie Animation */}
+        {/* 7. Lottie Animation - Dual Water Splash Effect */}
         {showAnimation && (
-          <div className="absolute -top-[10%] left-0 w-full h-[120%] pointer-events-none z-[100] flex items-center justify-center scale-90">
-            <div className="w-full h-full">
+          <div className="absolute inset-0 w-full h-full pointer-events-none z-[100]">
+            {/* Left Splash */}
+            <div className="absolute left-[-15%] bottom-[5%] w-[70%] h-[70%] flex items-center justify-center opacity-80">
               <Lottie 
+                key={`left-${animationKey}`}
                 animationData={haldiAnimation} 
-                loop={true}
+                loop={false}
+                onComplete={handleAnimationComplete}
+                style={{ width: '100%', height: '100%' }}
+              />
+            </div>
+            {/* Right Splash (Mirrored) */}
+            <div className="absolute right-[-15%] bottom-[5%] w-[70%] h-[70%] flex items-center justify-center opacity-80 -scale-x-100">
+              <Lottie 
+                key={`right-${animationKey}`}
+                animationData={haldiAnimation} 
+                loop={false}
                 style={{ width: '100%', height: '100%' }}
               />
             </div>

@@ -38,19 +38,9 @@ export default function SangeetInvitation() {
         transition={{ duration: 1.5 }}
       />
 
-      {/* Sangeet Light Layer - Desktop (Visible on Screen) */}
-      <motion.img
-        src="/sangeet/sangeet-light.png"
-        className="hidden md:block absolute inset-0 w-full h-full object-contain z-[11] pointer-events-none mix-blend-screen"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 2, ease: "easeOut" }}
-      />
-
       {/* Main Content Container - Enforced 9:16 Aspect Ratio */}
       <div className="relative w-full h-full max-w-[calc(100vh*9/16)] mx-auto overflow-hidden z-10">
 
-        
         {/* 2. Top Flowers/Decor (Layer 1) */}
         <motion.img
           src="/sangeet/sangeet-flower.png"
@@ -60,20 +50,11 @@ export default function SangeetInvitation() {
           transition={{ delay: 0.5, duration: 1.5, ease: "easeOut" }}
         />
 
-        {/* Sangeet Light Layer - Mobile (Fitted Inside Container) */}
-        <motion.img
-          src="/sangeet/sangeet-light.png"
-          className="md:hidden absolute inset-0 w-full h-full object-cover z-[11] pointer-events-none mix-blend-screen"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 2, ease: "easeOut" }}
-        />
-
      
 
         {/* Lights Purple Animation - Behind Couple */}
         {showAnimation && (
-          <div className="absolute inset-0 pointer-events-none z-[15] flex items-center justify-center scale-110">
+          <div className="absolute inset-0 pointer-events-none z-[15] flex items-center justify-center scale-110 translate-y-[10%]">
             <div className="w-full h-full">
               <Lottie 
                 animationData={purpleLightsAnimation} 
@@ -87,7 +68,7 @@ export default function SangeetInvitation() {
         {/* 3. Couple (Layer 2) */}
         <motion.img
           src="/sangeet/sangeet-couple.png"
-          className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[100%] object-contain pointer-events-none z-20"
+          className="absolute bottom-[0%] left-1/2 -translate-x-1/2 w-[100%] object-contain pointer-events-none z-20"
 
           initial={{ y: 150, opacity: 0, scale: 0.9 }}
           animate={{ y: 0, opacity: 1, scale: 1 }}
@@ -124,7 +105,7 @@ export default function SangeetInvitation() {
 
         {/* Disco Ball Animation - Top Center, In Front of Texts */}
         {showAnimation && (
-          <div className="absolute top-[-12%] left-1/2 -translate-x-1/2 w-[60%] h-[40%] pointer-events-none z-[50]">
+          <div className="absolute top-[-12%] left-1/2 -translate-x-1/2 w-[60%] h-[40%] pointer-events-none z-[25]">
             <Lottie 
               animationData={discoBallAnimation} 
               loop={true}
@@ -150,7 +131,7 @@ export default function SangeetInvitation() {
 
         {/* 5. Sangeet Text 2 (Layer 4) */}
         <motion.div
-          className="absolute top-[-4%] left-1/2 -translate-x-1/2 w-full h-full z-40 pointer-events-none"
+          className="absolute top-[0%] left-1/2 -translate-x-1/2 w-full h-full z-40 pointer-events-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.8, duration: 1.5 }}
